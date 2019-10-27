@@ -1,0 +1,28 @@
+baseURL = "http://localhost"
+languageCode = "en-us"
+defaultContentLanguage = "en"
+title = "AWS DevOps Modernization Workshops"
+theme = "learn"
+uglyurls = true
+sectionPagesMenu = "main"
+pygmentsCodeFences = true
+
+[blackfriday]
+hrefTargetBlank = true
+
+[params]
+themeVariant = "mine"
+showVisitedLinks = false
+author = "James Bland"
+description = "AWS DevOps Modernization Workshops"
+disableSearch = false
+disableAssetsBusting = false
+disableLanguageSwitchingButton = true
+disableShortcutsTitle=true
+disableNextPrev = true
+
+
+
+[outputs]
+home = [ "HTML", "AMP", "RSS", "JSON"]
+page = [ "HTML", "AMP"]

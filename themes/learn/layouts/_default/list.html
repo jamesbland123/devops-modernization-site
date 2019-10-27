@@ -1,0 +1,49 @@
+{{ partial "header.html" . }}
+
+{{ if eq .Kind "section" }}
+	{{ .Content }}
+	
+	{{ range .Pages }}
+			<table>
+				<tr>
+					<td width=175>
+					<a href="{{ .Permalink }}">
+			{{ if isset .Params "image" }}
+				{{ $image_name := .Param "image"}}
+				{{ $image_path := resources.Get $image_name}}
+				{{ $logo_image := ($image_path.Resize "160x").RelPermalink }}
+				<img src="{{ $logo_image }}">
+				
+			{{ else }}
+			<img src="/images/no_logo.png">
+				
+			{{ end }}	  
+				
+					</a> 
+						</td>
+						<td>{{ .Summary }}</td>
+					</tr>
+				</table>
+				<br>
+
+			
+		{{ end }}
+
+{{end}}
+
+{{ if or (eq .Kind "taxonomy") (eq .Kind "taxonomyTerm") }}
+<ul>
+	{{ range .Pages }}
+		<li><a href="{{.RelPermalink}}">{{.Title}}</a></li>
+	{{ end }}
+</ul>
+{{end}}
+
+<footer class=" footline" >
+	{{with .Params.LastModifierDisplayName}}
+	    <i class='fas fa-user'></i> <a href="mailto:{{ $.Params.LastModifierEmail }}">{{ . }}</a> {{with $.Date}} <i class='fas fa-calendar'></i> {{ .Format "02/01/2006" }}{{end}}
+	    </div>
+	{{end}}
+</footer>
+
+{{ partial "footer.html" . }}
