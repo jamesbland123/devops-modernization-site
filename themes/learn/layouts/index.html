@@ -7,12 +7,12 @@
 	{{.Site.Home.Content}}	
 
 	{{ range .Site.Sections }}
-		<h4><a href="{{ .Permalink }}">{{ .Title }}</a></h4>
+		<h4><a href="{{ .RelPermalink }}">{{ .Title }}</a></h4>
 		{{ range .Pages }}
 			<table>
 				<tr>
 					<td width=175>
-					<a href="{{ .Permalink }}">
+					<a href="{{ .RelPermalink }}">
 			{{ if isset .Params "image" }}
 				{{ $image_name := .Param "image"}}
 				{{ $image_path := resources.Get $image_name}}
